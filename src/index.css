@@ -79,7 +79,11 @@ code {
 }
 
 .loginButton:hover {
-  filter: brightness(0.9);
+  filter: brightness(0.8);
+}
+
+.loginButton:disabled {
+  filter: brightness(0.8);
 }
 
 #loginCart {
@@ -87,16 +91,6 @@ code {
   height: 97.851px;
   flex-shrink: 0;
   margin-bottom: 72px;
-}
-
-.loginInputField {
-  border-radius: 4px;
-  border: 1px solid #fff;
-  background: none;
-  display: flex;
-  padding: 2px;
-  margin-bottom: 20px;
-  width: 100%;
 }
 
 .loginForm input {
@@ -138,4 +132,38 @@ input:focus {
 
 #forgotPassword:hover {
   filter: brightness(0.9);
+}
+
+.loginInputField {
+  border-radius: 4px;
+  border: 1px solid #fff;
+  background: none;
+  display: flex;
+  padding: 2px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginInputFieldPassword {
+  border-radius: 4px;
+  border: 1px solid #fff;
+  background: none;
+  display: flex;
+  padding: 2px;
+  width: 100%;
+}
+
+#wrongPasswordCombination {
+  color: #f64848;
+  font-weight: 600;
+}
+
+.inputFieldWithMessage {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.modalOK {
+  cursor: pointer;
+  font-weight: 600;
 }
