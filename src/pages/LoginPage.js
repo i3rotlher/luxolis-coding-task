@@ -5,6 +5,7 @@ import LoginCart from '../loginCart.svg';
 import LoginUser from '../user.svg';
 import LoginLock from '../lock.svg';
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 
 const dummyTestAccount = {
@@ -14,7 +15,7 @@ const dummyTestAccount = {
 
 const LoginPage = () => {
   const [wrongPasswordCombination, setWrongPasswordCombination] = useState(false);
-
+  const navigate = useNavigate();
   const showWrongPasswordMessage = () => toast.error('The provided password is wrong', {
     style: {
       padding: '16px',
@@ -33,9 +34,9 @@ const LoginPage = () => {
     const username = e.target.elements.username.value;
     const password = e.target.elements.password.value;
 
-    // Login would happen here with api calls instead of dummy test
+    // Login would happen here with api calls instead of dummy test and set login credentials
     if (username === dummyTestAccount.username && password === dummyTestAccount.password) {
-      // weiterleiten
+      navigate('/pageAfterLogin')
     } else {
       showWrongPasswordMessage();
     }
