@@ -4,7 +4,7 @@ import LoginBackground from '../LoginBackground.svg';
 import LoginCart from '../loginCart.svg';
 import LoginUser from '../user.svg';
 import LoginLock from '../lock.svg';
-import Modal from 'react-modal';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const dummyTestAccount = {
@@ -14,15 +14,18 @@ const dummyTestAccount = {
 
 const LoginPage = () => {
   const [wrongPasswordCombination, setWrongPasswordCombination] = useState(false);
-  const [wrongPasswordModal, setWrongPasswordModal] = useState(false);
 
-  const showWrongPasswordModal = () => {
-    setWrongPasswordModal(true);
-  }
-
-  const closeWrongPasswordModal = () => {
-    setWrongPasswordModal(false);
-  }
+  const showWrongPasswordMessage = () => toast.error('The provided password is wrong', {
+    style: {
+      padding: '16px',
+      fontWeight: '600',
+      color: '#f64848',
+    },
+    iconTheme: {
+      primary: '#f64848',
+      secondary: '#FFFAEE',
+    },
+  });
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -34,7 +37,7 @@ const LoginPage = () => {
     if (username === dummyTestAccount.username && password === dummyTestAccount.password) {
       // weiterleiten
     } else {
-      showWrongPasswordModal();
+      showWrongPasswordMessage();
     }
   };
 
@@ -52,46 +55,7 @@ const LoginPage = () => {
       <div className="background loginPageBackground">
         <img src={LoginBackground} alt="" />
       </div>
-
-      <Modal
-        isOpen={wrongPasswordModal}
-        onRequestClose={closeWrongPasswordModal}
-        contentLabel="Wrong Password Modal"
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'transparent',
-            backdropFilter: 'blur(1px)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-
-
-          },
-          content: {
-            border: 'none',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            inset: 'unset',
-            width: 'fit-content',
-            height: 'fit-content',
-            backgroundColor: '#f64848'
-          }
-        }}
-      >
-        <div className='wrongPasswordModal'>
-          <h2>Wrong username or password!</h2>
-          <span className="modalOK" onClick={closeWrongPasswordModal}>OK</span>
-        </div>
-      </Modal>
-
+      <Toaster />
       <div className='centerContainer'>
 
         <div className="loginForm">
@@ -104,11 +68,12 @@ const LoginPage = () => {
               <input placeholder='USERNAME' name="username" required></input>
             </label>
 
+            <label className="loginInputField">
+              <img className="inputIcon" src={LoginLock} alt="" />
+              <input type='password' placeholder='PASSWORD' name="password" required onChange={checkPasswordCombination}></input>
+            </label>
+
             <div className='inputFieldWithMessage'>
-              <label className="loginInputFieldPassword">
-                <img className="inputIcon" src={LoginLock} alt="" />
-                <input type='password' placeholder='PASSWORD' name="password" required onChange={checkPasswordCombination}></input>
-              </label>
               {wrongPasswordCombination && <span id="wrongPasswordCombination">Wrong combination</span>}
             </div>
 

@@ -76,6 +76,7 @@ code {
   text-transform: uppercase;
   margin-bottom: 11px;
   cursor: pointer;
+  margin-top: 23px;
 }
 
 .loginButton:hover {
@@ -144,22 +145,14 @@ input:focus {
   margin-bottom: 20px;
 }
 
-.loginInputFieldPassword {
-  border-radius: 4px;
-  border: 1px solid #fff;
-  background: none;
-  display: flex;
-  padding: 2px;
-  width: 100%;
-}
-
 #wrongPasswordCombination {
   color: #f64848;
   font-weight: 600;
 }
 
 .inputFieldWithMessage {
-  margin-bottom: 20px;
+  position: relative;
+  top: -20px;
   width: 100%;
 }
 
