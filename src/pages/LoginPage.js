@@ -53,9 +53,6 @@ const LoginPage = () => {
 
   return (
     <div className="loginPage">
-      <div className="background loginPageBackground">
-        <img src={LoginBackground} alt="" />
-      </div>
       <Toaster />
       <div className='centerContainer'>
 

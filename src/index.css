@@ -14,26 +14,6 @@ code {
     monospace;
 }
 
-.loginPageBackground {
-  background: #2148c0;
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.background img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .centerContainer {
   display: grid;
   justify-items: center;
@@ -159,4 +139,11 @@ input:focus {
 .modalOK {
   cursor: pointer;
   font-weight: 600;
+}
+
+.loginPage {
+  background: #2148c0;
+  background-image: url('LoginBackground.svg');
+  background-size: cover;
+  background-position: center;
 }
